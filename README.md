@@ -34,11 +34,16 @@ This folder structure will be mapped to following URL's
 ### Description.yaml (json)
 This file contains blog's meta information including: blog owner, configuration, permissions.
 
-## Caching
-TDB.
-
 ## Installation
-TDB.
+It should be installed via NuGet package. The package would contain all required Views/Models/Controller to be able to run blog engine. All updates are recieved via NuGet as well.
+
+It is possible to integrate wonka into any ASP.NET MVC or ASP.NET WebForms application. Separate 'Area' call 'blog' is installed, so blog accessible by http://yoursite.com/blog.
 
 ## Configuration
-TDB.
+At first visit of /blog URL the configuration wizard appears. It includes just basic configuration parameters as: github account name, repository, themes. 
+
+## Caching
+To prevent multiple github API requests Wonka provides simple caching capabilies. Lightweight embedded database will be used to cache prepared posts. Currently I haven't decieded which to choose: SQL Lite or SQL CE.
+
+## Themes
+Several minimalistic themes are supported. 
