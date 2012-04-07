@@ -23,12 +23,22 @@ namespace Wonka.Core.Github
         {
             using (var client = new WebClient())
             {
-                var response = client.DownloadString(RefsUri);
+                var url = string.Format("{0}/repos/{1}/{2}/git/refs", ApiBaseUri, _user, _repo);
+                var response = client.DownloadString(url);
 
                 return JsonConvert.DeserializeObject<IList<Reference>>(response);
             }
         }
 
-        protected Uri RefsUri { get { return new Uri(string.Format("{0}/repos/{1}/{2}/git/refs", ApiBaseUri, _user, _repo));}}
+        public Trees GetTrees(string sha)
+        {
+            using (var client = new WebClient())
+            {
+                var url = string.Format("{0}/repos/{1}/{2}/git/trees/{3}", ApiBaseUri, _user, _repo, sha);
+                var response = client.DownloadString(url);
+
+                return JsonConvert.DeserializeObject<Trees>(response);
+            }
+        }
     }
 }
