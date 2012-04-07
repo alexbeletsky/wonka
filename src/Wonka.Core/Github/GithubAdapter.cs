@@ -34,7 +34,7 @@ namespace Wonka.Core.Github
         {
             using (var client = new WebClient())
             {
-                var url = string.Format("{0}/repos/{1}/{2}/git/trees/{3}", ApiBaseUri, _user, _repo, sha);
+                var url = string.Format("{0}/repos/{1}/{2}/git/trees/{3}?recursive=1", ApiBaseUri, _user, _repo, sha);
                 var response = client.DownloadString(url);
 
                 return JsonConvert.DeserializeObject<Trees>(response);
