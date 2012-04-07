@@ -40,5 +40,16 @@ namespace Wonka.Core.Github
                 return JsonConvert.DeserializeObject<Trees>(response);
             }
         }
+
+        public Blob GetBlob(string sha)
+        {
+            using (var client = new WebClient())
+            {
+                var url = string.Format("{0}/repos/{1}/{2}/git/blobs/{3}", ApiBaseUri, _user, _repo, sha);
+                var response = client.DownloadString(url);
+
+                return JsonConvert.DeserializeObject<Blob>(response);
+            }
+        }
     }
 }

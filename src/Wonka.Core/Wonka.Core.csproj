@@ -57,6 +57,7 @@
     <Compile Include="Bootstrap\Bootstrapper.cs" />
     <Compile Include="Bootstrap\Configuration.cs" />
     <Compile Include="Github\GithubAdapter.cs" />
+    <Compile Include="Github\Model\Blob.cs" />
     <Compile Include="Github\Model\Item.cs" />
     <Compile Include="Github\Model\Object.cs" />
     <Compile Include="Github\Model\Reference.cs" />
