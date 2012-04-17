@@ -6,7 +6,7 @@ using Wonka.Core.Github.Model;
 
 namespace Wonka.Core.Github
 {
-    public class GithubAdapter
+    public class GithubAdapter : IGithubAdapter
     {
         private readonly string _user;
         private readonly string _repo;
