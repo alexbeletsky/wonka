@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
+using Wonka.Core.Engine;
 using Wonka.Core.Github;
 using Wonka.Core.Github.Model;
-using Object = Wonka.Core.Github.Model.Object;
 
-namespace Wonka.Tests.Engine
+namespace Wonka.Tests.Core.Engine
 {
     [TestFixture]
     public class TreeReferencesRetrieverTests
@@ -91,35 +89,5 @@ namespace Wonka.Tests.Engine
             // assert
             treeReferences.Count().Should().Be(2);
         }
-    }
-
-    public class TreeReferencesRetriever
-    {
-        private readonly IGithubAdapter _adapter;
-
-        public TreeReferencesRetriever(IGithubAdapter adapter)
-        {
-            _adapter = adapter;
-        }
-
-        public IEnumerable<TreeReference> ForAll()
-        {
-            var reference = _adapter.GetAllReferences().First();
-            var trees = _adapter.GetTrees(reference.Object.Sha);
-
-            return trees.Tree.Select(i => new TreeReference {Url = i.Url, Sha = i.Sha, Path = i.Path});
-        }
-
-        public IEnumerable<TreeReference> ForPathContains(string contains)
-        {
-            return ForAll().Where(r => r.Path.Contains(contains));
-        }
-    }
-
-    public class TreeReference
-    {
-        public string Path { get; set; }
-        public string Url { get; set; }
-        public string Sha { get; set; }
     }
 }

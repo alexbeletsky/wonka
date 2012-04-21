@@ -3,7 +3,7 @@ using NUnit.Framework;
 using FluentAssertions;
 using Wonka.Core.Bootstrap;
 
-namespace Wonka.Tests.Bootstrap
+namespace Wonka.Tests.Core.Bootstrap
 {
     [TestFixture]
     public class BootstrapperTests

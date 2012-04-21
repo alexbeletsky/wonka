@@ -3,7 +3,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using Wonka.Core.Github;
 
-namespace Wonka.Tests.Github
+namespace Wonka.Tests.Core.Github
 {
     [TestFixture]
     public class GithubAdapterTests
