@@ -15,10 +15,10 @@ namespace Wonka.Tests.Core.Engine
         internal static BlobToBlogPost proc;
         internal static BlogPost result;
 
-        private Establish context = () =>
-                                        {
-                                            proc = new BlobToBlogPost();
-                                        };
+        Establish context = () =>
+                                {
+                                    proc = new BlobToBlogPost();
+                                };
     }
 
     [Subject(typeof(BlobToBlogPost))]

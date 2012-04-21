@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Wonka.Core.Engine.Model;
 using Wonka.Core.Github;
+using Wonka.Core.Github.Model;
 
 namespace Wonka.Core.Engine
 {
@@ -16,7 +18,13 @@ namespace Wonka.Core.Engine
 
         public IEnumerable<BlogPost> GetPosts(IEnumerable<TreeReference> references)
         {
-            return new List<BlogPost> {new BlogPost {Title = "some", Date = DateTime.Now, Body = "xxx"}};
+            return references.Select(ToBlogPost);
+        }
+
+        private BlogPost ToBlogPost(TreeReference b)
+        {
+            var blob = _adapter.GetBlob(b.Sha);
+            return new BlobToBlogPost().Process(blob);
         }
     }
 }
